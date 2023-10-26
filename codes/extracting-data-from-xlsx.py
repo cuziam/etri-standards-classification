@@ -6,7 +6,7 @@ file_path = '../reference/ETRI 표준 분류 XYZ 20230719_04_이윤주.xlsx'
 df = pd.read_excel(file_path, header=2)
 
 # 2. Select the columns and rows of interest
-selected_columns = ['적용단계', '스마트 인프라', '인프라분류', '상호운용성수준', '세부분류키워드']
+selected_columns = ['적용단계', '스마트 인프라', '상호운용성수준' ]
 # Selecting rows from 4 to 4757 (1-based indexing to 0-based indexing)
 selected_rows = df.loc[1:4756, selected_columns]
 
@@ -14,6 +14,6 @@ selected_rows = df.loc[1:4756, selected_columns]
 json_data = selected_rows.to_json(orient='records', force_ascii=False)
 
 # 4. Save the JSON data to a file
-json_file_path = '../src/selected_data.json'
+json_file_path = '../src/selected_data_except_sub.json'
 with open(json_file_path, 'w', encoding='utf-8') as f:
     f.write(json_data)
